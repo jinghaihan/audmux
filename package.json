@@ -1,7 +1,7 @@
 {
   "name": "audmux",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "packageManager": "pnpm@10.25.0",
   "description": "Extract and remux audio streams from online video sources.",
   "author": "jinghaihan",
