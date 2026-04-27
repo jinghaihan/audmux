@@ -1,5 +1,5 @@
 import type { Options, PlatformProcessor, ProcessResult } from '../types'
-import { downloadAudio, getHTML, getVideoType } from './api'
+import { downloadAudio, getHTML, getPlayInfo, getVideoType } from './api'
 import { parseHTML } from './parser'
 
 export class Processor implements PlatformProcessor {
@@ -11,11 +11,13 @@ export class Processor implements PlatformProcessor {
       throw new Error('only BV videos are supported')
 
     const html = await getHTML(options.url)
-    const data = parseHTML(options.url, html)
-    const filename = await downloadAudio(data.title, data.audio.base_url)
+    const video = parseHTML(options.url, html)
+    const playInfo = await getPlayInfo(video)
+    const audio = playInfo.dash.audio.sort((a, b) => b.bandwidth - a.bandwidth)[0]
+    const filename = await downloadAudio(video.title, audio.base_url)
 
     return {
-      title: data.title,
+      title: video.title,
       filename,
     }
   }
