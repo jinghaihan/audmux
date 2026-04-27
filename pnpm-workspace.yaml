@@ -7,31 +7,34 @@ trustPolicy: no-downgrade
 packages: []
 catalogs:
   build:
-    tsdown: ^0.17.4
+    tsdown: ^0.21.10
   cli:
-    bumpp: ^10.3.2
-    pncat: ^0.7.7
-    taze: ^19.9.2
+    bumpp: ^11.0.1
+    pncat: ^0.11.1
+    taze: ^19.11.0
   lint:
-    '@antfu/eslint-config': ^6.7.1
-    eslint: ^9.39.2
-    lint-staged: ^16.2.7
+    '@octohash/eslint-config': ^0.3.1
+    eslint: ^10.2.1
+    lint-staged: ^16.4.0
     simple-git-hooks: ^2.13.1
   network:
     ofetch: ^1.5.1
   node:
-    '@clack/prompts': ^0.11.0
+    '@clack/prompts': ^1.2.0
     ansis: ^4.2.0
-    cac: ^6.7.14
+    cac: ^7.0.0
     pathe: ^2.0.3
   script:
     tsx: ^4.21.0
   test:
-    vitest: ^4.0.15
+    vitest: ^4.1.5
   tsc:
-    typescript: ^5.9.3
+    typescript: ^6.0.3
   types:
-    '@types/node': ^24.10.4
+    '@types/node': ^25.6.0
+  utils:
+    p-limit: ^7.3.0
+    p-retry: ^8.0.0
 onlyBuiltDependencies:
   - esbuild
   - simple-git-hooks

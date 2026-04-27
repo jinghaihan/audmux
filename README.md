@@ -17,7 +17,7 @@ npx audmux --bv <bv>
 ```
 
 <p align='center'>
-<img src='./assets/help.png' />
+<img src='./assets/help.png' alt="help" />
 </p>
 
 ## Supported Platforms

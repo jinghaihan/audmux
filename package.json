@@ -2,7 +2,7 @@
   "name": "audmux",
   "type": "module",
   "version": "0.1.1",
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.33.2",
   "description": "Extract and remux audio streams from online video sources.",
   "author": "jinghaihan",
   "license": "MIT",
@@ -46,25 +46,27 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
+    "ofetch": "catalog:network",
     "@clack/prompts": "catalog:node",
     "ansis": "catalog:node",
     "cac": "catalog:node",
-    "ofetch": "catalog:network",
-    "pathe": "catalog:node"
+    "pathe": "catalog:node",
+    "p-limit": "catalog:utils",
+    "p-retry": "catalog:utils"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:lint",
-    "@types/node": "catalog:types",
+    "tsdown": "catalog:build",
     "bumpp": "catalog:cli",
+    "pncat": "catalog:cli",
+    "taze": "catalog:cli",
+    "@octohash/eslint-config": "catalog:lint",
     "eslint": "catalog:lint",
     "lint-staged": "catalog:lint",
-    "pncat": "catalog:cli",
     "simple-git-hooks": "catalog:lint",
-    "taze": "catalog:cli",
-    "tsdown": "catalog:build",
     "tsx": "catalog:script",
+    "vitest": "catalog:test",
     "typescript": "catalog:tsc",
-    "vitest": "catalog:test"
+    "@types/node": "catalog:types"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
