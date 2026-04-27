@@ -1,4 +1,4 @@
-import type { VIDEO_TYPE } from './constants'
+import type { VIDEO_TYPE } from '../constants/bilibili'
 
 export type VideoType = (typeof VIDEO_TYPE)[keyof typeof VIDEO_TYPE]
 

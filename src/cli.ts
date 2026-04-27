@@ -14,6 +14,7 @@ try {
   cli
     .command('', 'Command description')
     .option('--url <url>', 'The url of the video')
+    .option('--bv <bv>', 'The Bilibili BV id of the video')
     .allowUnknownOptions()
     .action(async (options: Partial<CommandOptions>) => {
       p.intro(`${c.yellow`${NAME} `}${c.dim`v${VERSION}`}`)

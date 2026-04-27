@@ -13,6 +13,7 @@ Extract and remux audio streams from online video sources.
 
 ```bash
 npx audmux --url <url>
+npx audmux --bv <bv>
 ```
 
 <p align='center'>

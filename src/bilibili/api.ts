@@ -8,7 +8,7 @@ import * as p from '@clack/prompts'
 import c from 'ansis'
 import { ofetch } from 'ofetch'
 import { resolve } from 'pathe'
-import { MIXIN_KEY_ENC_TAB, USER_AGENT, VIDEO_TYPE } from './constants'
+import { MIXIN_KEY_ENC_TAB, USER_AGENT, VIDEO_TYPE } from '../constants/bilibili'
 
 export function getVideoType(url: string): VideoType | null {
   for (const key in VIDEO_TYPE) {
