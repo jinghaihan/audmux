@@ -1,9 +1,9 @@
-import type { Options, PlatformProcessor, ProcessResult } from '../types'
+import type { PlatformProcessor, ProcessResult, TaskOptions } from '../types'
 import { downloadAudio, getHTML, getPlayInfo, getVideoType } from './api'
 import { parseHTML } from './parser'
 
 export class Processor implements PlatformProcessor {
-  async process(options: Options): Promise<ProcessResult> {
+  async process(options: TaskOptions): Promise<ProcessResult> {
     const videoType = getVideoType(options.url)
     if (!videoType)
       throw new Error('invalid bilibili url')

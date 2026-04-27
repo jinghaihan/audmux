@@ -6,6 +6,7 @@ import c from 'ansis'
 import { cac } from 'cac'
 import { resolveConfig } from './config'
 import { NAME, VERSION } from './constants'
+import { executeTasks } from './executor'
 import { getPlatformProcessor } from './platforms'
 
 try {
@@ -15,6 +16,8 @@ try {
     .command('', 'Command description')
     .option('--url <url>', 'The url of the video')
     .option('--bv <bv>', 'The Bilibili BV id of the video')
+    .option('--limit <n>', 'The maximum number of concurrent downloads')
+    .option('--retries <n>', 'The number of retries for failed downloads')
     .allowUnknownOptions()
     .action(async (options: Partial<CommandOptions>) => {
       p.intro(`${c.yellow`${NAME} `}${c.dim`v${VERSION}`}`)
@@ -26,10 +29,15 @@ try {
 
       spinner.start('processing video')
       const processor = getPlatformProcessor(config.platform)
-      const result = await processor.process(config)
+      const results = await executeTasks(config, processor)
       spinner.stop('processing completed')
 
-      p.outro(`${c.green`downloaded: ${result.filename}`}`)
+      if (results.length === 1) {
+        p.outro(`${c.green`downloaded: ${results[0].filename}`}`)
+        return
+      }
+
+      p.outro(`${c.green`downloaded ${results.length} files`}`)
     })
 
   cli.help()

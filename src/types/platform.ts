@@ -1,4 +1,4 @@
-import type { Options } from './command'
+import type { TaskOptions } from './command'
 
 export interface ProcessResult {
   title: string
@@ -6,5 +6,5 @@ export interface ProcessResult {
 }
 
 export interface PlatformProcessor {
-  process: (options: Options) => Promise<ProcessResult>
+  process: (options: TaskOptions) => Promise<ProcessResult>
 }
