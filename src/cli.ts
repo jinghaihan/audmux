@@ -23,21 +23,28 @@ try {
       p.intro(`${c.yellow`${NAME} `}${c.dim`v${VERSION}`}`)
 
       const spinner = p.spinner()
-      spinner.start('resolving config')
-      const config = resolveConfig(options)
-      spinner.stop('config resolved')
+      try {
+        spinner.start('resolving config')
+        const config = resolveConfig(options)
+        spinner.stop('config resolved')
 
-      spinner.start('processing video')
-      const processor = getPlatformProcessor(config.platform)
-      const results = await executeTasks(config, processor)
-      spinner.stop('processing completed')
+        spinner.start('processing video')
+        const processor = getPlatformProcessor(config.platform)
+        const results = await executeTasks(config, processor)
+        spinner.stop('processing completed')
 
-      if (results.length === 1) {
-        p.outro(`${c.green`downloaded: ${results[0].filename}`}`)
-        return
+        if (results.length === 1) {
+          p.outro(`${c.green`downloaded: ${results[0].filename}`}`)
+          return
+        }
+
+        p.outro(`${c.green`downloaded ${results.length} files`}`)
       }
-
-      p.outro(`${c.green`downloaded ${results.length} files`}`)
+      catch (error) {
+        spinner.error('processing failed')
+        console.error(error)
+        process.exitCode = 1
+      }
     })
 
   cli.help()
