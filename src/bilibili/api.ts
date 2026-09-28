@@ -9,6 +9,7 @@ import c from 'ansis'
 import { ofetch } from 'ofetch'
 import { resolve } from 'pathe'
 import { MIXIN_KEY_ENC_TAB, USER_AGENT, VIDEO_TYPE } from '../constants/bilibili'
+import { toAudioFilename } from './filename'
 
 export function getVideoType(url: string): VideoType | null {
   for (const key in VIDEO_TYPE) {
@@ -82,7 +83,7 @@ export async function downloadAudio(name: string, url: string) {
       'Referer': 'https://www.bilibili.com/',
     },
   })
-  const filename = `${name}.m4a`
+  const filename = toAudioFilename(name)
   const filepath = resolve(filename)
   if (existsSync(filepath)) {
     const result = await p.confirm({
